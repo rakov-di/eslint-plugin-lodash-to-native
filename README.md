@@ -1,1 +1,3 @@
-# eslint-plugin-lodash-to-native
+Домашка по тулингу
+
+[Часть 1. DevTools](README.md)
