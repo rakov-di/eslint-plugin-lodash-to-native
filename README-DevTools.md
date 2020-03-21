@@ -1,11 +1,22 @@
-# eslint-plugin-lodash-to-native
+Вернуться на [главную](README.md)
 
 # Домашка по тулинга. DevTools
+
+## Содержание <a name = "contents"></a>
+
+- [Описание](#about)
+- [Вкладка Network](#network)
+- [Вкладка Performance](#performamce)
+- [Вкладка Coverage](#coverage)
+
+## Описание <a name = "about"></a> 
 
 Тестировалась desktop-версию сайта https://lifehacker.ru. 
 Не все скриншоты делались в один день, поэтому данные на них (время запросов, размеры ресурсов и т.д.) могут незначительно отличаться друг от друга.
 
-## Network
+## Вкладка Network <a name = "network"></a> 
+([вернуться к содержанию](#contents))
+
 
 Профиль загрузки ресурсов при открытии страницы https://lifehacker.ru ([HAR-архив](DevTools/Network/lifehacker.ru.har)).
 
@@ -54,7 +65,8 @@
 ![Lighthouse](DevTools/Network/LH.png)
 ![Lighthouse2](DevTools/Network/LH2.png)
 
-## Performance
+## Вкладка Performance <a name = "performance"></a>
+([вернуться к содержанию](#contents))
 
 Профиль загрузки страницы https://lifehacker.ru ([посмотреть](Profile.json)).
 
@@ -83,7 +95,8 @@
 ![Time common](DevTools/Performance/Time common.png)
 
 
-## Coverage
+## Вкладка Coverage <a name = "coverages"></a>
+([вернуться к содержанию](#contents))
 
 Вкладка `Coverage` после загрузки выглядит так.
 
@@ -104,3 +117,6 @@
 Реальный объем неиспользуемого кода (на который можетбыть направлены наша оптимизация) меньше, т.к.: 
 - часть CSS/JS принадлежит сторонним ресурсам, например Яндекс.Метрики, Яндекс.ADFOX, Google.Analytics. Мы (как разработчики сайта) не можем повлиять на них напрямую. 
 - изначально показан лишь использованный CSS/JS на момент загрузки. При взаимодействии с интерфейсом (открытие меню, скролл страницы, ховеры, открытие всплывающих окон) - объет неиспользованного сокращается].
+
+
+Вернуться на [главную](README.md)
