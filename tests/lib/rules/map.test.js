@@ -4,16 +4,16 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/map");
+const rules = require("../../../lib/rules/map");
 const RuleTester = require("eslint").RuleTester;
 
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2018 } });
+const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 6 } });
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-ruleTester.run("map", rule.map, {
+ruleTester.run("map", rules, {
   valid: [
     "$.map([], fn);",
     "const newArr = map([1, 2, 3, 4], fn);",

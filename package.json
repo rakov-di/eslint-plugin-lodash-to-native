@@ -2,7 +2,7 @@
   "name": "eslint-plugin-lodash-to-native",
   "version": "1.0.0",
   "description": "Домашка по тулингу",
-  "main": "lib/rules/map.js",
+  "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha tests/**/*.js"
   },
