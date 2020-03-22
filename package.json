@@ -2,16 +2,16 @@
   "name": "eslint-plugin-lodash-to-native",
   "version": "1.0.0",
   "description": "Домашка по тулингу",
-  "main": "index.js",
+  "main": "lib/rules/map.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/lib/rules/map.test.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rakov-di/eslint-plugin-lodash-to-native.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dmitry Rakov",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rakov-di/eslint-plugin-lodash-to-native/issues"
