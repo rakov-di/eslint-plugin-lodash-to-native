@@ -4,7 +4,7 @@
   "description": "Домашка по тулингу",
   "main": "lib/rules/map.js",
   "scripts": {
-    "test": "node tests/lib/rules/map.test.js"
+    "test": "node_modules/.bin/mocha tests/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/rakov-di/eslint-plugin-lodash-to-native#readme",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
-    "eslint-plugin-local-rules": "^0.1.1"
+    "eslint-plugin-local-rules": "^0.1.1",
+    "mocha": "^7.1.1"
   },
   "dependencies": {}
 }

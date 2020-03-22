@@ -1,5 +1,4 @@
 module.exports = {
-  parser: 'babel-eslint',
   env: {
     browser: true,
     es6: true,
@@ -7,18 +6,21 @@ module.exports = {
     node: true
   },
   plugins: ['eslint-plugin-local-rules'],
-  // plugins: ['lodash-to-native'],
+  plugins: ['lodash-to-native'],
   // extends: [
   //   "standard"
+  // ],
+  // extends: [
+  //   "./node_modules/eslint-plugin-local-rules/lib/rules/map.js"
   // ],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: "module"
   },
   rules: {
-    // 'lodash-to-native/map': 'warn',
+    'lodash-to-native/map': 'warn',
     // 'local-rules/no-bad-await': 'error',
-    'local-rules/map': 'warn',
+    // 'local-rules/map': 'warn',
     "linebreak-style": "off",
     "operator-linebreak": ["error", "before"],
     "semi": ["error", "always"],
