@@ -36,7 +36,7 @@ ruleTester.run("map", rule.map, {
       output: "const b = [].map(fn);",
       errors: [
         {
-          message: 'Этот map можно заменить на нативный map',
+          message: 'Lodash method "map" can be replaced to js native method "map"',
           line: 1,
           column: 11
         }]
@@ -46,7 +46,7 @@ ruleTester.run("map", rule.map, {
       output: 'const a = [1, 2, 3, 4].map(fn)',
       errors: [
         {
-          message: 'Этот map можно заменить на нативный map',
+          message: 'Lodash method "map" can be replaced to js native method "map"',
           line: 1,
           column: 11
         }]
@@ -56,7 +56,7 @@ ruleTester.run("map", rule.map, {
       output: 'const a = [1, 2, 3, 4].map(elem => elem * 2)',
       errors: [
         {
-          message: 'Этот map можно заменить на нативный map',
+          message: 'Lodash method "map" can be replaced to js native method "map"',
           line: 1,
           column: 11
         }]
@@ -70,7 +70,7 @@ ruleTester.run("map", rule.map, {
       })`,
       errors: [
         {
-          message: 'Этот map можно заменить на нативный map',
+          message: 'Lodash method "map" can be replaced to js native method "map"',
           line: 1,
           column: 11
         }]
@@ -84,7 +84,7 @@ ruleTester.run("map", rule.map, {
       };`,
       errors: [
         {
-          message: 'Этот map можно заменить на нативный map',
+          message: 'Lodash method "map" can be replaced to js native method "map"',
           line: 2,
           column: 16
         }]
@@ -94,9 +94,39 @@ ruleTester.run("map", rule.map, {
       output: `const a = Array.isArray(arr) ? arr.map(fn) : _.map(arr, fn);`,
       errors: [
         {
-          message: 'Этот map можно заменить на нативный map через условие',
+          message: 'Lodash method "map" can be replaced to js native method "map" (through condition)',
           line: 1,
           column: 11
+        }]
+    },
+    {
+      code: `Array.isArray(otherArr) ? otherArr.map(fn) : _.map(arr,fn);`,
+      output: `Array.isArray(otherArr) ? otherArr.map(fn) : Array.isArray(arr) ? arr.map(fn) : _.map(arr, fn);`,
+      errors: [
+        {
+          message: 'Lodash method "map" can be replaced to js native method "map" (through condition)',
+          line: 1,
+          column: 46
+        }]
+    },
+    {
+      code: `if (arr.length > 5) {
+              arr = _.map(arr,fn);
+            }
+            else {
+              arr = [];
+            }`,
+      output: `if (arr.length > 5) {
+              arr = Array.isArray(arr) ? arr.map(fn) : _.map(arr, fn);
+            }
+            else {
+              arr = [];
+            }`,
+      errors: [
+        {
+          message: 'Lodash method "map" can be replaced to js native method "map" (through condition)',
+          line: 2,
+          column: 21
         }]
     }
   ]

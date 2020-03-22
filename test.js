@@ -1,4 +1,5 @@
-const arr = [1,2,3];
+let arr = [1,2,3];
+const otherArr = ['array', 'for', 'test'];
 const fn = elem => elem * 4;
 
 const _ = {
@@ -38,5 +39,12 @@ const foo = () => {
 
 // Invalid. Replace to condition
 const result7 = _.map(arr, fn);
+Array.isArray(otherArr) ? otherArr.map(fn) : _.map(arr,fn);
+if (arr.length > 5) {
+  arr = _.map(arr,fn);
+}
+else {
+  arr = [];
+}
 
 
