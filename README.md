@@ -1,22 +1,51 @@
-Домашка по тулингу. Плагин для ESLint
+# Домашка по тулингу. Плагин для ESLint
 
-# Установка <a name="#install"></a>
+## Описание <a name="#about"></a>
 
-Сначала установите [ESLint](http://eslint.org/):
+При разработке использовались:
+- eslint - 6.8.0
+- mocha - 7.1.1
+
+Создан плагин с правилом, которое находит в js-файлах вызовы функций вида `_.map(collection, fn)`. 
+При запуске eslint с флагом `--fix` происходит следующее:
+- если `collection` является объектом - ничего не происходит
+- если найденная функция находится внутри условного оператора, проверяющего, является ли `collection` массивом - ничего не происходит
+    ```js
+    Array.isArray(collection) ? collection.map(fn) : _.map(collection,fn);
+    ```
+    ```js
+    if (Array.isArray(collection)) {
+          collection.map(fn);
+        }
+        else {
+          _.map(collection,fn);
+        }
+    ```
+- если `colection` является массивом - плагин заменяет всю конструкцию на нативный js `collection.map(fn)`
+- в остальных случаях плагин заменяет исходную функцию на условие:
+    ```js
+    Array.isArray(collection) ? collection.map(fn) : _.map(collection,fn);
+    ```
+
+Проверки на то, чем является `_` и присутствует ли он(а) в текущей или глобальной области видимости нет. Переопределение `_` в коде никак не обрабатывается.
+
+## Установка <a name="#install"></a>
+
+Установите [ESLint](http://eslint.org/):
 
 ```bash
 npm i -D eslint
 ```
 
-Затем установите плагин с правилом `lodash-to-native`:
+Установите плагин с правилом `lodash-to-native`:
 
 ```bash
-npm i -D https://github.com/rakov-di/eslint-plugin-lodash-to-native
+npm i -S https://github.com/rakov-di/eslint-plugin-lodash-to-native
 ```
 
-# Использование <a name="#use"></a>
+## Использование <a name="#use"></a>
 
-Добавьте плагин `lodash-to-native` в блог `plugin` в вашем файле с конфигурацией ESLint `.eslintrc`. Можно опустить префикс `eslint-plugin-`:
+Добавьте плагин `lodash-to-native` в блок `plugin` в вашем файле с конфигурацией ESLint `.eslintrc.js`. Можно опустить префикс `eslint-plugin-`:
 ```
 {
   "plugins": [
@@ -34,13 +63,16 @@ npm i -D https://github.com/rakov-di/eslint-plugin-lodash-to-native
 }
 ```
 
-# Поддерживаемые правила <a name="#rules"></a>
+При следующей проверки ESLint-ом правило должно работать.
+
+## Поддерживаемые правила <a name="#rules"></a>
 
 lodash-to-native/map
 
-# Для разработчиков <a name="#developers"></a>
 
-Скачайте репозиторий и перейдите в него:
+## Для разработчиков <a name="#developers"></a>
+
+Для работы с иходным кодом скачайте репозиторий и перейдите в него:
 ```bash
 git clone https://github.com/MOTORIST/eslint-plugin-lodash-to-native#installation
 cd eslint-plugin-lodash-to-native
@@ -54,9 +86,4 @@ npm install
 Для запуска тестов наберите:
 ```bash
 npm test
-```
-
-Для запуска тестов на реальном js-кода запустите
-```bash
-eslint test.js
 ```
