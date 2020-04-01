@@ -74,7 +74,7 @@ lodash-to-native/map
 
 Для работы с иходным кодом скачайте репозиторий и перейдите в него:
 ```bash
-git clone https://github.com/MOTORIST/eslint-plugin-lodash-to-native#installation
+git clone https://github.com/rakov-di/eslint-plugin-lodash-to-native#installation
 cd eslint-plugin-lodash-to-native
 ```
 
